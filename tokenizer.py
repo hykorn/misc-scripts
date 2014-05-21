@@ -549,6 +549,33 @@ class ExcelParser(ExcelParserTokens):
                 else: output += t.tvalue
         return output
     
+    # Derived from render(self) to be used to change iif function to CASE WHEN used in analytics
+    def extractFunctions(self):
+        output = ""
+        newArgFlag = 0
+        if self.tokens:
+            for t in self.tokens.items:
+                if   t.ttype == self.TOK_TYPE_FUNCTION and t.tsubtype == self.TOK_SUBTYPE_START:     output += "( CASE WHEN "
+                elif t.ttype == self.TOK_TYPE_FUNCTION and t.tsubtype == self.TOK_SUBTYPE_STOP:      output += " END )"
+                elif t.ttype == self.TOK_TYPE_ARGUMENT and newArgFlag == 0:
+                    output += " THEN "
+                    newArgFlag = 1
+                elif t.ttype == self.TOK_TYPE_ARGUMENT and newArgFlag == 1:
+                    output += " ELSE "
+                    newArgFlag = 0
+                elif t.ttype == self.TOK_TYPE_SUBEXPR  and t.tsubtype == self.TOK_SUBTYPE_START:     output += "("
+                elif t.ttype == self.TOK_TYPE_SUBEXPR  and t.tsubtype == self.TOK_SUBTYPE_STOP:      output += ")"
+                # TODO: add in RE substitution of " with "" for strings
+                elif t.ttype == self.TOK_TYPE_OPERAND  and t.tsubtype == self.TOK_SUBTYPE_TEXT:      output += "\"" + t.tvalue + "\""
+                elif t.ttype == self.TOK_TYPE_OP_IN    and t.tsubtype == self.TOK_SUBTYPE_INTERSECT: output += " "
+
+                elif t.ttype == self.TOK_TYPE_OPERAND  and t.tsubtype == self.TOK_SUBTYPE_RANGE:    output += '"' + t.tvalue + '"'
+
+                else: output += t.tvalue
+        return output
+
+	return output
+	
     def prettyprint(self):
         indent = 0
         output = ""
