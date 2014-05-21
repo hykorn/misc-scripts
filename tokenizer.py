@@ -569,6 +569,7 @@ class ExcelParser(ExcelParserTokens):
                 elif t.ttype == self.TOK_TYPE_OPERAND  and t.tsubtype == self.TOK_SUBTYPE_TEXT:      output += "\"" + t.tvalue + "\""
                 elif t.ttype == self.TOK_TYPE_OP_IN    and t.tsubtype == self.TOK_SUBTYPE_INTERSECT: output += " "
 
+                # enclose attributes with "" to allow attributes with . in middle such as "VS.IUB.AttRLAdd"
                 elif t.ttype == self.TOK_TYPE_OPERAND  and t.tsubtype == self.TOK_SUBTYPE_RANGE:    output += '"' + t.tvalue + '"'
 
                 else: output += t.tvalue
