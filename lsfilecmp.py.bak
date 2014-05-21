@@ -1,0 +1,26 @@
+#!/usr/bin/python
+
+import os,sys,re,filecmp
+
+total = len(sys.argv)
+
+for dirname, dirnames, filenames in os.walk(sys.argv[1]):
+    # print path to all subdirectories first.
+    for subdirname in dirnames:
+        os.path.join(dirname, subdirname)
+
+    # print path to all filenames.
+    for filename in filenames:
+        print os.path.join(dirname, filename)
+    for filename in filenames:
+      match = re.search("^~", filename)
+      if not match:
+        print filename
+        for dirname2, dirnames2, filenames2 in os.walk(sys.argv[2]):
+          for filename2 in filenames2:
+            match2 = re.search("^~", filename2)
+            if not match2:
+              cmp = filecmp.cmp('filename', 'filename2')
+              print cmp
+
+    break
