@@ -1,0 +1,147 @@
+( VS.IUB.AttRLAdd + VS.IUB.AttRLSetup +( VS.IUB.AttRLRecfg *2))/1800
+(( VS.HSDPA.MeanChThroughput.TotalBytes )+(( VS.PS.Int.DL.128.Thruput +  VS.PS.Int.DL.144.Thruput + VS.PS.Int.DL.16.Thruput + VS.PS.Int.DL.256.Thruput +  VS.PS.Int.DL.32.Thruput + VS.PS.Int.DL.384.Thruput +  VS.PS.Int.DL.64.Thruput +  VS.PS.Int.DL.8.Thruput )/8))/1000000
+(( VS.HSUPA.MeanChThroughput.TotalBytes )+(( VS.PS.Int.UL.128.Thruput +  VS.PS.Int.UL.144.Thruput + VS.PS.Int.UL.16.Thruput + VS.PS.Int.UL.256.Thruput +  VS.PS.Int.UL.32.Thruput + VS.PS.Int.UL.384.Thruput +  VS.PS.Int.UL.64.Thruput +  VS.PS.Int.UL.8.Thruput )/8))/1000000
+ VS.RAB.FailEstabCS.Cong / VS.RAB.AttEstabCS.Conv *100
+iif( OLA.Data.AFR.StateFailures + OLA.Data.AFR.DCHSetupsAndPSServs <=0,0, 100*( OLA.Data.AFR.StateFailures /( OLA.Data.AFR.StateFailures + OLA.Data.AFR.DCHSetupsAndPSServs )))
+ VS.RAB.SuccEstabPS.Bkg + VS.RAB.SuccEstabPS.Int + VS.DCCC.P2D.Succ + VS.DCCC.URAP2D.Succ + VS.DCCC.Succ.F2D + VS.HSDPA.F2H.Succ + VS.HSUPA.F2E.Succ 
+ RRC.AttConnEstab.OrgInterCall - RRC.SuccConnEstab.OrgInterCall + RRC.AttConnEstab.OrgBkgCall - RRC.SuccConnEstab.OrgBkgCall + RRC.AttConnEstab.TmInterCall - RRC.SuccConnEstab.TmItrCall + RRC.AttConnEstab.TmBkgCall - RRC.SuccConnEstab.TmBkgCall + VS.RAB.AttEstabPS.Bkg - VS.RAB.SuccEstabPS.Bkg + VS.RAB.AttEstabPS.Int - VS.RAB.SuccEstabPS.Int + VS.DCCC.P2F.Att - VS.DCCC.P2F.Succ + VS.DCCC.P2D.Att - VS.DCCC.P2D.Succ + VS.DCCC.URAP2F.Att - VS.DCCC.URAP2F.Succ + VS.DCCC.URAP2D.Att - VS.DCCC.URAP2D.Succ + VS.DCCC.C2D.Att - VS.DCCC.Succ.F2D + VS.HSDPA.F2H.Att - VS.HSDPA.F2H.Succ + VS.HSUPA.F2E.Att - VS.HSUPA.F2E.Succ 
+iif( VS.RAB.SuccEstabPS.Bkg + VS.RAB.SuccEstabPS.Int + VS.DCCC.P2D.Succ + VS.DCCC.URAP2D.Succ + VS.DCCC.Succ.F2D + VS.HSDPA.F2H.Succ + VS.HSUPA.F2E.Succ =0,0,100*( VS.RAB.AbnormRel.PS - VS.RAB.AbnormRel.PS.CCH )/( VS.RAB.SuccEstabPS.Bkg + VS.RAB.SuccEstabPS.Int + VS.DCCC.P2D.Succ + VS.DCCC.URAP2D.Succ + VS.DCCC.Succ.F2D + VS.HSDPA.F2H.Succ + VS.HSUPA.F2E.Succ ))
+ VS.HSDPA.MeanChThroughput.TotalBytes /1000000
+ VS.HSUPA.MeanChThroughput.TotalBytes /1000000
+( VS.RAB.AbnormRel.PS + VS.RAB.NormRel.PS )
+( VS.RAB.AbnormRel.PS - VS.RAB.AbnormRel.PS.CCH )
+ VS.RAB.AbnormRel.AMR  +  VS.RAB.NormRel.AMR  +  VS.RAB.AbnormRel.AMRWB  +  VS.RAB.NormRel.AMRWB 
+ VS.RAB.AbnormRel.AMR  +  VS.RAB.AbnormRel.AMRWB 
+iif(( VS.RAB.AttEstabCS.Conv + RRC.AttConnEstab.EmgCall - RRC.SuccConnEstab.EmgCall + RRC.AttConnEstab.OrgConvCall - RRC.SuccConnEstab.OrgConvCall + RRC.AttConnEstab.TmConvCall - RRC.SuccConnEstab.TmConvCall )<=0,0,100*(1-( VS.RAB.SuccEstabCS.Conv /( VS.RAB.AttEstabCS.Conv + RRC.AttConnEstab.EmgCall - RRC.SuccConnEstab.EmgCall + RRC.AttConnEstab.OrgConvCall - RRC.SuccConnEstab.OrgConvCall + RRC.AttConnEstab.TmConvCall - RRC.SuccConnEstab.TmConvCall ))))
+ VS.RAB.AttEstabCS.Conv + RRC.AttConnEstab.EmgCall - RRC.SuccConnEstab.EmgCall + RRC.AttConnEstab.OrgConvCall - RRC.SuccConnEstab.OrgConvCall + RRC.AttConnEstab.TmConvCall - RRC.SuccConnEstab.TmConvCall 
+ VS.RAB.AttEstabCS.Conv + RRC.AttConnEstab.EmgCall - RRC.SuccConnEstab.EmgCall + RRC.AttConnEstab.OrgConvCall - RRC.SuccConnEstab.OrgConvCall + RRC.AttConnEstab.TmConvCall - RRC.SuccConnEstab.TmConvCall - VS.RAB.SuccEstabCS.Conv 
+iif( VS.RAB.AbnormRel.AMR  +  VS.RAB.NormRel.AMR  +  VS.RAB.AbnormRel.AMRWB  +  VS.RAB.NormRel.AMRWB  = 0, 0, 100 * ( VS.RAB.AbnormRel.AMR  +  VS.RAB.AbnormRel.AMRWB ) / ( VS.RAB.AbnormRel.AMR + VS.RAB.NormRel.AMR + VS.RAB.AbnormRel.AMRWB + VS.RAB.NormRel.AMRWB ))
+
+
+
+iif(  VS.HSDPA.MeanChThroughput.Times > 0, 8 *  VS.HSDPA.MeanChThroughput.TotalBytes  /  VS.HSDPA.MeanChThroughput.Times  / 1000, 0 )
+ VS.HSDPA.MeanChThroughput.Times 
+8 *  VS.HSDPA.MeanChThroughput.TotalBytes  * 1000
+iif( VS.HSUPA.MeanChThroughput.Times  > 0, 8 *  VS.HSUPA.MeanChThroughput.TotalBytes  /  VS.HSUPA.MeanChThroughput.Times  / 1000, 0)
+ VS.HSUPA.MeanChThroughput.Times 
+8 *  VS.HSUPA.MeanChThroughput.TotalBytes  * 1000
+iif( ( VS.RRC.AttConnEstab.Sum *( VS.RRC.AttConEst.DCH + VS.RRC.AttConEst.CCH )*( VS.RAB.AttEstabPS.Conv + VS.RAB.AttEstabPS.Str + VS.RAB.AttEstabPS.Int + VS.RAB.AttEstabPS.Bkg ) =0),100,((( VS.RRC.FailConnEstab.Cong / VS.RRC.AttConnEstab.Sum )+( RRC.SuccConnEstab.sum /( VS.RRC.AttConEst.DCH + VS.RRC.AttConEst.CCH ))* VS.RAB.FailEstabPS.Unsup /( VS.RAB.AttEstabPS.Conv + VS.RAB.AttEstabPS.Str + VS.RAB.AttEstabPS.Int + VS.RAB.AttEstabPS.Bkg ))*100) )
+iif( VS.RAB.SuccEstabPS.Bkg + VS.RAB.SuccEstabPS.Int + VS.DCCC.P2D.Succ + VS.DCCC.URAP2D.Succ + VS.DCCC.Succ.F2D + VS.HSDPA.F2H.Succ + VS.HSUPA.F2E.Succ =0,0,100*( VS.RAB.AbnormRel.PS - VS.RAB.AbnormRel.PS.CCH )/( VS.RAB.SuccEstabPS.Bkg + VS.RAB.SuccEstabPS.Int + VS.DCCC.P2D.Succ + VS.DCCC.URAP2D.Succ + VS.DCCC.Succ.F2D + VS.HSDPA.F2H.Succ + VS.HSUPA.F2E.Succ ))
+( SLA.VoiceBCR.RRCCongRatio + SLA.VoiceBCR.RRCGoodRatio * SLA.VoiceBCR.RABCongRatio )*100
+(( VS.RRC.AttConnEstab.Sum ) * ( VS.RRC.AttConEst.DCH + VS.RRC.AttConEst.CCH ) * ( VS.RAB.AttEstabCS.Conv + VS.RAB.AttEstabCS.Str ))
+(( VS.RRC.FailConnEstab.Cong ) * (( VS.RRC.AttConEst.DCH + VS.RRC.AttConEst.CCH )) * (( VS.RAB.AttEstabCS.Conv + VS.RAB.AttEstabCS.Str ))) + (( VS.RRC.AttConnEstab.Sum ) * ( RRC.SuccConnEstab.sum ) * ( VS.RAB.FailEstabCS.Cong ) * 100)
+iif( VS.RAB.AbnormRel.AMR  +  VS.RAB.NormRel.AMR  = 0, 0, 100 *  VS.RAB.AbnormRel.AMR  / ( VS.RAB.AbnormRel.AMR  +  VS.RAB.NormRel.AMR ) )
+iif( VS.RAB.AttEstabCS.Conv + VS.RAB.AttEstabCS.Str =0,0, VS.RAB.FailEstabCS.Cong /( VS.RAB.AttEstabCS.Conv + VS.RAB.AttEstabCS.Str ))
+iif( VS.RRC.AttConnEstab.Sum =0,0, VS.RRC.FailConnEstab.Cong / VS.RRC.AttConnEstab.Sum )
+iif( VS.RRC.AttConEst.DCH + VS.RRC.AttConEst.CCH =0,1, RRC.SuccConnEstab.sum /( VS.RRC.AttConEst.DCH + VS.RRC.AttConEst.CCH ))
+
+
+
+
+
+
+
+
+
+
+ VS.HSDPA.MeanChThroughput.TotalBytes / VS.HSDPA.MeanChThroughput.Times 
+
+
+
+
+
+
+ VS.HSUPA.MeanChThroughput.TotalBytes / VS.HSUPA.MeanChThroughput.Times 
+
+
+
+
+
+
+
+iif( VS.RTWP.SAMPLE =0,-112.1,( VS.RTWP.CUM / VS.RTWP.SAMPLE -1121)/10)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+iif(  VS.HSDPA.MeanChThroughput.Times  = 0, 0,    8 * ( VS.HSDPA.MeanChThroughput.TotalBytes  /  VS.HSDPA.MeanChThroughput.Times ) )
+iif(   VS.HSUPA.MeanChThroughput.Times  =0,0,   8 * ( VS.HSUPA.MeanChThroughput.TotalBytes  /  VS.HSUPA.MeanChThroughput.Times ) )

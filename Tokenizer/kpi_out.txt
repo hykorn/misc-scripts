@@ -1,0 +1,38 @@
+("VS.IUB.AttRLAdd"+"VS.IUB.AttRLSetup"+("VS.IUB.AttRLRecfg"*2))/1800
+(("VS.HSDPA.MeanChThroughput.TotalBytes")+(("VS.PS.Int.DL.128.Thruput"+"VS.PS.Int.DL.144.Thruput"+"VS.PS.Int.DL.16.Thruput"+"VS.PS.Int.DL.256.Thruput"+"VS.PS.Int.DL.32.Thruput"+"VS.PS.Int.DL.384.Thruput"+"VS.PS.Int.DL.64.Thruput"+"VS.PS.Int.DL.8.Thruput")/8))/1000000
+(("VS.HSUPA.MeanChThroughput.TotalBytes")+(("VS.PS.Int.UL.128.Thruput"+"VS.PS.Int.UL.144.Thruput"+"VS.PS.Int.UL.16.Thruput"+"VS.PS.Int.UL.256.Thruput"+"VS.PS.Int.UL.32.Thruput"+"VS.PS.Int.UL.384.Thruput"+"VS.PS.Int.UL.64.Thruput"+"VS.PS.Int.UL.8.Thruput")/8))/1000000
+"VS.RAB.FailEstabCS.Cong"/"VS.RAB.AttEstabCS.Conv"*100
+( CASE WHEN "WH.OLA_Data_AFR_StateFailures"+"WH.OLA_Data_AFR_DCHSetupsAndPSServs"<=0 THEN 0 ELSE 100*("WH.OLA_Data_AFR_StateFailures"/("WH.OLA_Data_AFR_StateFailures"+"WH.OLA_Data_AFR_DCHSetupsAndPSServs")) END )
+"VS.RAB.SuccEstabPS.Bkg"+"VS.RAB.SuccEstabPS.Int"+"VS.DCCC.P2D.Succ"+"VS.DCCC.URAP2D.Succ"+"VS.DCCC.Succ.F2D"+"VS.HSDPA.F2H.Succ"+"VS.HSUPA.F2E.Succ"
+"RRC.AttConnEstab.OrgInterCall"-"RRC.SuccConnEstab.OrgInterCall"+"RRC.AttConnEstab.OrgBkgCall"-"RRC.SuccConnEstab.OrgBkgCall"+"RRC.AttConnEstab.TmInterCall"-"RRC.SuccConnEstab.TmItrCall"+"RRC.AttConnEstab.TmBkgCall"-"RRC.SuccConnEstab.TmBkgCall"+"VS.RAB.AttEstabPS.Bkg"-"VS.RAB.SuccEstabPS.Bkg"+"VS.RAB.AttEstabPS.Int"-"VS.RAB.SuccEstabPS.Int"+"VS.DCCC.P2F.Att"-"VS.DCCC.P2F.Succ"+"VS.DCCC.P2D.Att"-"VS.DCCC.P2D.Succ"+"VS.DCCC.URAP2F.Att"-"VS.DCCC.URAP2F.Succ"+"VS.DCCC.URAP2D.Att"-"VS.DCCC.URAP2D.Succ"+"VS.DCCC.C2D.Att"-"VS.DCCC.Succ.F2D"+"VS.HSDPA.F2H.Att"-"VS.HSDPA.F2H.Succ"+"VS.HSUPA.F2E.Att"-"VS.HSUPA.F2E.Succ"
+( CASE WHEN "VS.RAB.SuccEstabPS.Bkg"+"VS.RAB.SuccEstabPS.Int"+"VS.DCCC.P2D.Succ"+"VS.DCCC.URAP2D.Succ"+"VS.DCCC.Succ.F2D"+"VS.HSDPA.F2H.Succ"+"VS.HSUPA.F2E.Succ"=0 THEN 0 ELSE 100*("VS.RAB.AbnormRel.PS"-"VS.RAB.AbnormRel.PS.CCH")/("VS.RAB.SuccEstabPS.Bkg"+"VS.RAB.SuccEstabPS.Int"+"VS.DCCC.P2D.Succ"+"VS.DCCC.URAP2D.Succ"+"VS.DCCC.Succ.F2D"+"VS.HSDPA.F2H.Succ"+"VS.HSUPA.F2E.Succ") END )
+"VS.HSDPA.MeanChThroughput.TotalBytes"/1000000
+"VS.HSUPA.MeanChThroughput.TotalBytes"/1000000
+("VS.RAB.AbnormRel.PS"+"VS.RAB.NormRel.PS")
+("VS.RAB.AbnormRel.PS"-"VS.RAB.AbnormRel.PS.CCH")
+"VS.RAB.AbnormRel.AMR"+"VS.RAB.NormRel.AMR"+"VS.RAB.AbnormRel.AMRWB"+"VS.RAB.NormRel.AMRWB"
+"VS.RAB.AbnormRel.AMR"+"VS.RAB.AbnormRel.AMRWB"
+( CASE WHEN ("VS.RAB.AttEstabCS.Conv"+"RRC.AttConnEstab.EmgCall"-"RRC.SuccConnEstab.EmgCall"+"RRC.AttConnEstab.OrgConvCall"-"RRC.SuccConnEstab.OrgConvCall"+"RRC.AttConnEstab.TmConvCall"-"RRC.SuccConnEstab.TmConvCall")<=0 THEN 0 ELSE 100*(1-("VS.RAB.SuccEstabCS.Conv"/("VS.RAB.AttEstabCS.Conv"+"RRC.AttConnEstab.EmgCall"-"RRC.SuccConnEstab.EmgCall"+"RRC.AttConnEstab.OrgConvCall"-"RRC.SuccConnEstab.OrgConvCall"+"RRC.AttConnEstab.TmConvCall"-"RRC.SuccConnEstab.TmConvCall"))) END )
+"VS.RAB.AttEstabCS.Conv"+"RRC.AttConnEstab.EmgCall"-"RRC.SuccConnEstab.EmgCall"+"RRC.AttConnEstab.OrgConvCall"-"RRC.SuccConnEstab.OrgConvCall"+"RRC.AttConnEstab.TmConvCall"-"RRC.SuccConnEstab.TmConvCall"
+"VS.RAB.AttEstabCS.Conv"+"RRC.AttConnEstab.EmgCall"-"RRC.SuccConnEstab.EmgCall"+"RRC.AttConnEstab.OrgConvCall"-"RRC.SuccConnEstab.OrgConvCall"+"RRC.AttConnEstab.TmConvCall"-"RRC.SuccConnEstab.TmConvCall"-"VS.RAB.SuccEstabCS.Conv"
+( CASE WHEN "VS.RAB.AbnormRel.AMR"+"VS.RAB.NormRel.AMR"+"VS.RAB.AbnormRel.AMRWB"+"VS.RAB.NormRel.AMRWB"=0 THEN 0 ELSE 100*("VS.RAB.AbnormRel.AMR"+"VS.RAB.AbnormRel.AMRWB")/("VS.RAB.AbnormRel.AMR"+"VS.RAB.NormRel.AMR"+"VS.RAB.AbnormRel.AMRWB"+"VS.RAB.NormRel.AMRWB") END )
+( CASE WHEN "VS.HSDPA.MeanChThroughput.Times">0 THEN 8*"VS.HSDPA.MeanChThroughput.TotalBytes"/"VS.HSDPA.MeanChThroughput.Times"/1000 ELSE 0 END )
+"VS.HSDPA.MeanChThroughput.Times"
+8*"VS.HSDPA.MeanChThroughput.TotalBytes"*1000
+( CASE WHEN "VS.HSUPA.MeanChThroughput.Times">0 THEN 8*"VS.HSUPA.MeanChThroughput.TotalBytes"/"VS.HSUPA.MeanChThroughput.Times"/1000 ELSE 0 END )
+"VS.HSUPA.MeanChThroughput.Times"
+8*"VS.HSUPA.MeanChThroughput.TotalBytes"*1000
+( CASE WHEN ("VS.RRC.AttConnEstab.Sum"*("VS.RRC.AttConEst.DCH"+"VS.RRC.AttConEst.CCH")*("VS.RAB.AttEstabPS.Conv"+"VS.RAB.AttEstabPS.Str"+"VS.RAB.AttEstabPS.Int"+"VS.RAB.AttEstabPS.Bkg")=0) THEN 100 ELSE ((("VS.RRC.FailConnEstab.Cong"/"VS.RRC.AttConnEstab.Sum")+("RRC.SuccConnEstab.sum"/("VS.RRC.AttConEst.DCH"+"VS.RRC.AttConEst.CCH"))*"VS.RAB.FailEstabPS.Unsup"/("VS.RAB.AttEstabPS.Conv"+"VS.RAB.AttEstabPS.Str"+"VS.RAB.AttEstabPS.Int"+"VS.RAB.AttEstabPS.Bkg"))*100) END )
+( CASE WHEN "VS.RAB.SuccEstabPS.Bkg"+"VS.RAB.SuccEstabPS.Int"+"VS.DCCC.P2D.Succ"+"VS.DCCC.URAP2D.Succ"+"VS.DCCC.Succ.F2D"+"VS.HSDPA.F2H.Succ"+"VS.HSUPA.F2E.Succ"=0 THEN 0 ELSE 100*("VS.RAB.AbnormRel.PS"-"VS.RAB.AbnormRel.PS.CCH")/("VS.RAB.SuccEstabPS.Bkg"+"VS.RAB.SuccEstabPS.Int"+"VS.DCCC.P2D.Succ"+"VS.DCCC.URAP2D.Succ"+"VS.DCCC.Succ.F2D"+"VS.HSDPA.F2H.Succ"+"VS.HSUPA.F2E.Succ") END )
+("WH.SLA_VoiceBCR_RRCCongRatio"+"WH.SLA_VoiceBCR_RRCGoodRatio"*"WH.SLA_VoiceBCR_RABCongRatio")*100
+(("VS.RRC.AttConnEstab.Sum")*("VS.RRC.AttConEst.DCH"+"VS.RRC.AttConEst.CCH")*("VS.RAB.AttEstabCS.Conv"+"VS.RAB.AttEstabCS.Str"))
+(("VS.RRC.FailConnEstab.Cong")*(("VS.RRC.AttConEst.DCH"+"VS.RRC.AttConEst.CCH"))*(("VS.RAB.AttEstabCS.Conv"+"VS.RAB.AttEstabCS.Str")))+(("VS.RRC.AttConnEstab.Sum")*("RRC.SuccConnEstab.sum")*("VS.RAB.FailEstabCS.Cong")*100)
+( CASE WHEN "VS.RAB.AbnormRel.AMR"+"VS.RAB.NormRel.AMR"=0 THEN 0 ELSE 100*"VS.RAB.AbnormRel.AMR"/("VS.RAB.AbnormRel.AMR"+"VS.RAB.NormRel.AMR") END )
+( CASE WHEN "VS.RAB.AttEstabCS.Conv"+"VS.RAB.AttEstabCS.Str"=0 THEN 0 ELSE "VS.RAB.FailEstabCS.Cong"/("VS.RAB.AttEstabCS.Conv"+"VS.RAB.AttEstabCS.Str") END )
+( CASE WHEN "VS.RRC.AttConnEstab.Sum"=0 THEN 0 ELSE "VS.RRC.FailConnEstab.Cong"/"VS.RRC.AttConnEstab.Sum" END )
+( CASE WHEN "VS.RRC.AttConEst.DCH"+"VS.RRC.AttConEst.CCH"=0 THEN 1 ELSE "RRC.SuccConnEstab.sum"/("VS.RRC.AttConEst.DCH"+"VS.RRC.AttConEst.CCH") END )
+"VS.HSDPA.MeanChThroughput.TotalBytes"/"VS.HSDPA.MeanChThroughput.Times"
+"VS.HSUPA.MeanChThroughput.TotalBytes"/"VS.HSUPA.MeanChThroughput.Times"
+( CASE WHEN "VS.RTWP.SAMPLE"=0 THEN -112.1 ELSE ("VS.RTWP.CUM"/"VS.RTWP.SAMPLE"-1121)/10 END )
+( CASE WHEN "VS.HSDPA.MeanChThroughput.Times"=0 THEN 0 ELSE 8*("VS.HSDPA.MeanChThroughput.TotalBytes"/"VS.HSDPA.MeanChThroughput.Times") END )
+( CASE WHEN "VS.HSUPA.MeanChThroughput.Times"=0 THEN 0 ELSE 8*("VS.HSUPA.MeanChThroughput.TotalBytes"/"VS.HSUPA.MeanChThroughput.Times") END )

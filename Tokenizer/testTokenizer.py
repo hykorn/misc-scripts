@@ -25,17 +25,6 @@ for i in formulaArray:
 for attributeName, kpiName in attributeHash.iteritems():
     
     # adding '"' is important as partial attribute name would affect precision
-    #if [oneFormula for oneFormula in newFormulas if '"'+oneAttribute+'"' in oneFormula]:
-    #if [oneFormula for oneFormula in newFormulas if oneAttribute in oneFormula]:
-        #print oneAttribute+" found in "
-        #text = [oneFormula for oneFormula in newFormulas if oneAttribute in oneFormula]
-        #print text
-
-        # replace attributes that are defined as KPIs in formula
-        #text = text[0].replace(oneAttribute,attributeHash[oneAttribute])
-        #print text
-        #print attributeHash[oneAttribute]
-
     # This is a better solution to find and replace attributes
     for idx, currFormula in enumerate(newFormulas):
         if attributeName in currFormula:

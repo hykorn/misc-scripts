@@ -1,15 +1,16 @@
-select * from elementlevel;
+select * from element where levelid=-1 and elementname like ';
 select * from element where elementname like '%CELL_NUMBER%';
-select * from element where elementid='405503';
+select * from element where elementid='157216';
 select * from element where levelid='-1' AND categorynumber='12';
 select count(*) from element where categorynumber=5;
 select * from element where elementname like '%\_1900' ESCAPE '\' and levelid=-1;
 select * from attribute where attributename = 'OutputPower';
 select * from formatgroup where formatgroupid=9;
-select * from attribute where lower(attributename) like lower('%DTGPEHMissingNBR%');
+select * from attribute where lower(attributename) like lower('%RSSI_PUCCH_LEVEL_06%');
 select * from attribute where isrelational = '1';
 select * from attribute where attributeid='90801';
 select * from attribute where attributename='SAC';
+select * from datasource where source like '%_pm_%';
 select * from continuousattribute where attributeid=133;
 select * from continuousvalues where attributeid='74102' and elementid='405373';
 select * from continuousvalues where elementid='405156' and validfrom='25-Nov-13';
@@ -18,7 +19,11 @@ select * from attributelevels where attributeid>='73700';
 select * from calculatedattribute where attributeid='92034';
 select * from calculatedattributedefinitions where attributeid='92034';
 select * from thresholdattribute where attributeid='92202';
-select * from discretevalues where attributeid like '74102%'  and elementid='405373';
+select * from discretevalues where attributeid like '799%';
+select a1.attributename, b1.elementname, c1.validitydate,c1.doublevalue from attribute a1 
+left join discretevalues c1 on a1.attributeid = c1.attributeid
+left join element b1 on b1.elementid = c1.elementid
+where c1.doublevalue > 1 and a1.attributename like 'RAB_%';
 select * from discretevalues where validitydate like '25-NOV-13%';
 select * from discretevalues_freq where attributeid like '736%' and doublevalue!=0;
 select * from continuousvalues where attributeid='133';
